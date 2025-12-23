@@ -1,0 +1,12 @@
+{
+  "k": "ct",
+  "c": "mock-ciphertext-data",
+  "ob": null,
+  "bf": null,
+  "hm": null,
+  "i": {
+    "t": "ci_secrets",
+    "c": "value"
+  },
+  "v": 2
+}

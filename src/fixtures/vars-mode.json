@@ -1,0 +1,20 @@
+{
+  "API_KEY": {
+    "k": "ct",
+    "c": "mock-api-key-ciphertext",
+    "ob": null,
+    "bf": null,
+    "hm": null,
+    "i": { "t": "ci_secrets", "c": "value" },
+    "v": 2
+  },
+  "DATABASE_URL": {
+    "k": "ct",
+    "c": "mock-database-url-ciphertext",
+    "ob": null,
+    "bf": null,
+    "hm": null,
+    "i": { "t": "ci_secrets", "c": "value" },
+    "v": 2
+  }
+}
