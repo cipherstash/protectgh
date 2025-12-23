@@ -29,7 +29,13 @@ export async function encryptSecrets(
     throw new Error(`Plaintext secrets file not found: ${inputPath}`);
   }
 
-  const fileContent = fs.readFileSync(inputPath, "utf-8");
+  let fileContent: string;
+  try {
+    fileContent = fs.readFileSync(inputPath, "utf-8");
+  } catch (err) {
+    throw new Error(`Failed to read input file ${inputPath}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
   const client = await protect({ schemas: [schema] });
 
   if (mode === "file") {
@@ -42,7 +48,11 @@ export async function encryptSecrets(
       throw new Error(`Failed to encrypt: ${result.failure.message}`);
     }
 
-    fs.writeFileSync(outputPath, JSON.stringify(result.data, null, 2) + "\n");
+    try {
+      fs.writeFileSync(outputPath, JSON.stringify(result.data, null, 2) + "\n");
+    } catch (err) {
+      throw new Error(`Failed to write output file ${outputPath}: ${err instanceof Error ? err.message : String(err)}`);
+    }
 
     // Count lines that look like KEY=value
     const env = dotenv.parse(fileContent);
@@ -64,7 +74,11 @@ export async function encryptSecrets(
       encrypted[key] = result.data;
     }
 
-    fs.writeFileSync(outputPath, JSON.stringify(encrypted, null, 2) + "\n");
+    try {
+      fs.writeFileSync(outputPath, JSON.stringify(encrypted, null, 2) + "\n");
+    } catch (err) {
+      throw new Error(`Failed to write output file ${outputPath}: ${err instanceof Error ? err.message : String(err)}`);
+    }
     return { mode: "vars", count: Object.keys(encrypted).length };
   }
 }

@@ -22,7 +22,13 @@ export async function decryptSecrets(filePath: string): Promise<DecryptResult> {
     throw new Error(`Encrypted secrets file not found: ${filePath}`);
   }
 
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+  let fileContent: string;
+  try {
+    fileContent = fs.readFileSync(filePath, "utf-8");
+  } catch (err) {
+    throw new Error(`Failed to read encrypted file ${filePath}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
   let encrypted: unknown;
 
   try {
@@ -48,6 +54,9 @@ export async function decryptSecrets(filePath: string): Promise<DecryptResult> {
     const encryptedVars = encrypted as Record<string, Encrypted>;
 
     for (const [key, payload] of Object.entries(encryptedVars)) {
+      if (!isFileMode(payload)) {
+        throw new Error(`Invalid encrypted payload for key: ${key}`);
+      }
       const result = await client.decrypt(payload);
       if (result.failure) {
         throw new Error(`Failed to decrypt ${key}: ${result.failure.message}`);

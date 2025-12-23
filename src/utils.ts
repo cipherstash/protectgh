@@ -42,11 +42,15 @@ export function writeToGitHubEnv(
   githubEnvPath: string
 ): void {
   for (const [key, value] of Object.entries(secrets)) {
-    const delimiter = `EOF_${key}_${Date.now()}`;
-    fs.appendFileSync(
-      githubEnvPath,
-      `${key}<<${delimiter}\n${value}\n${delimiter}\n`
-    );
+    const delimiter = `EOF_${key}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    try {
+      fs.appendFileSync(
+        githubEnvPath,
+        `${key}<<${delimiter}\n${value}\n${delimiter}\n`
+      );
+    } catch (err) {
+      throw new Error(`Failed to write to GITHUB_ENV (${githubEnvPath}): ${err instanceof Error ? err.message : String(err)}`);
+    }
   }
 }
 
