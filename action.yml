@@ -1,0 +1,21 @@
+name: 'Protect Secrets'
+description: 'Decrypt CipherStash-protected secrets and export to GitHub Actions environment'
+author: 'CipherStash'
+
+branding:
+  icon: 'lock'
+  color: 'purple'
+
+inputs:
+  secrets-file:
+    description: 'Path to the encrypted secrets file'
+    required: false
+    default: '.github/secrets.env.encrypted'
+
+outputs:
+  count:
+    description: 'Number of secrets decrypted and exported'
+
+runs:
+  using: 'node20'
+  main: 'dist/action/index.js'
