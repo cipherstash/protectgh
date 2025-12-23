@@ -1,0 +1,31 @@
+{
+  "name": "protectgh",
+  "version": "1.0.0",
+  "description": "GitHub Action to decrypt CipherStash-protected secrets",
+  "author": "CipherStash",
+  "license": "MIT",
+  "bin": {
+    "protectgh": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "npm run build:action && npm run build:cli",
+    "build:action": "ncc build src/action.ts -o dist/action --source-map --license licenses.txt",
+    "build:cli": "ncc build src/cli.ts -o dist/cli --source-map --license licenses.txt",
+    "typecheck": "tsc --noEmit",
+    "test": "npx tsx --test src/*.test.ts"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@cipherstash/protect": "^10.2.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vercel/ncc": "^0.38.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
