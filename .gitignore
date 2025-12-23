@@ -1,6 +1,11 @@
 node_modules/
 *.log
 .DS_Store
+.work/
+
+# Prevent accidental plaintext secret commits
+*.env.plaintext
+secrets.env.plaintext
 
 # Keep dist/ - required for GitHub Actions
 # dist/
