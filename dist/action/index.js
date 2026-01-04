@@ -8,6 +8,13 @@ module.exports = require(__nccwpck_require__.ab + "index.node")
 
 /***/ }),
 
+/***/ 1306:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+module.exports = require(__nccwpck_require__.ab + "index1.node")
+
+/***/ }),
+
 /***/ 4914:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -26668,14 +26675,6 @@ module.exports = eval("require")("@cipherstash/protect-ffi-linux-arm64-gnu");
 
 /***/ }),
 
-/***/ 2232:
-/***/ ((module) => {
-
-module.exports = eval("require")("@cipherstash/protect-ffi-linux-x64-gnu");
-
-
-/***/ }),
-
 /***/ 4247:
 /***/ ((module) => {
 
@@ -28602,7 +28601,7 @@ module.exports = (__nccwpck_require__(3802)/* .proxy */ .BX)({
         'win32-x64-msvc': () => __nccwpck_require__(5456),
         'darwin-x64': () => __nccwpck_require__(9848),
         'darwin-arm64': () => __nccwpck_require__(4546),
-        'linux-x64-gnu': () => __nccwpck_require__(2232),
+        'linux-x64-gnu': () => __nccwpck_require__(1306),
         'linux-x64-musl': () => __nccwpck_require__(4247),
         'linux-arm64-gnu': () => __nccwpck_require__(5886),
     },
