@@ -36,6 +36,11 @@ async function run(): Promise<void> {
       throw new Error("GITHUB_ENV not set - are you running in GitHub Actions?");
     }
 
+    // Mask all secret values so they don't appear in logs
+    for (const value of Object.values(allSecrets)) {
+      core.setSecret(value);
+    }
+
     writeToGitHubEnv(allSecrets, githubEnvPath);
 
     const totalCount = Object.keys(allSecrets).length;

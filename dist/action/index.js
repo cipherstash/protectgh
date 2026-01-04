@@ -26410,6 +26410,10 @@ async function run() {
         if (!githubEnvPath) {
             throw new Error("GITHUB_ENV not set - are you running in GitHub Actions?");
         }
+        // Mask all secret values so they don't appear in logs
+        for (const value of Object.values(allSecrets)) {
+            core.setSecret(value);
+        }
         (0, utils_1.writeToGitHubEnv)(allSecrets, githubEnvPath);
         const totalCount = Object.keys(allSecrets).length;
         core.info(`Exported ${totalCount} secrets to GITHUB_ENV`);
