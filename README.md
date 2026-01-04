@@ -30,16 +30,23 @@ GitHub Action to decrypt CipherStash-protected secrets and export them to `$GITH
 For local encryption/decryption:
 
 ```bash
-# Install
-npm install -g protectgh
+# Install (from npm if published, or locally from repo)
+npm install -g protectgh  # from npm registry
+npm install -g .          # from local repo
+
+# Show help
+protectgh --help
 
 # Encrypt (requires CS_* env vars)
-protectgh encrypt
-protectgh encrypt --vars  # per-variable mode
-protectgh encrypt --input FILE --output FILE
+protectgh encrypt                              # file mode (default)
+protectgh encrypt --file                       # explicit file mode
+protectgh encrypt --vars                       # per-variable mode
+protectgh encrypt -i FILE -o FILE              # custom input/output paths
+protectgh encrypt --input FILE --output FILE   # long form
 
 # Decrypt to stdout (for testing)
 protectgh decrypt
+protectgh decrypt --input FILE                 # decrypt specific file
 ```
 
 ## Setup
@@ -72,8 +79,17 @@ protectgh decrypt
    git commit -m "chore: add encrypted secrets"
    ```
 
-5. Use in workflow - secrets are available in subsequent steps.
+5. Use in workflow - secrets are available in subsequent steps:
+   ```yaml
+   - name: Use decrypted secrets
+     run: |
+       echo "Connecting to database..."
+       # Secrets are now environment variables
+     env:
+       DATABASE_URL: ${{ env.DATABASE_URL }}
+       API_KEY: ${{ env.API_KEY }}
+   ```
 
 ## License
 
-MIT
+[MIT License](LICENSE.md)
