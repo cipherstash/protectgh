@@ -13,7 +13,7 @@ npm run build          # Build both action and CLI (bundles with ncc into dist/)
 npm run build:action   # Build only the GitHub Action
 npm run build:cli      # Build only the CLI
 npm run typecheck      # TypeScript type checking
-npm test               # Run unit tests (tsx test runner)
+npm test               # Run unit tests (Node.js test runner via tsx)
 ```
 
 ## Architecture
