@@ -1,4 +1,4 @@
-# protectgh
+# CipherStash Secrets Action
 
 GitHub Action to decrypt CipherStash-protected secrets and export them to `$GITHUB_ENV`.
 
