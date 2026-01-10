@@ -26,7 +26,7 @@ function parseArgs(): CliArgs {
 
   if (command !== "encrypt" && command !== "decrypt") {
     console.error(`Unknown command: ${command}`);
-    console.error('Usage: protectgh <encrypt|decrypt> [options]');
+    console.error('Usage: secrets-action <encrypt|decrypt> [options]');
     process.exit(1);
   }
 
@@ -52,11 +52,11 @@ function parseArgs(): CliArgs {
 
 function printHelp(): void {
   console.log(`
-protectgh - CipherStash secrets encryption for GitHub Actions
+secrets-action - CipherStash secrets encryption for GitHub Actions
 
 USAGE:
-  protectgh encrypt [options]    Encrypt plaintext secrets file
-  protectgh decrypt [options]    Decrypt secrets to stdout (for testing)
+  secrets-action encrypt [options]    Encrypt plaintext secrets file
+  secrets-action decrypt [options]    Decrypt secrets to stdout (for testing)
 
 OPTIONS:
   --input, -i <file>    Input file path
@@ -75,10 +75,10 @@ ENVIRONMENT:
     CS_WORKSPACE_CRN
 
 EXAMPLES:
-  protectgh encrypt
-  protectgh encrypt --vars
-  protectgh encrypt --input secrets.env --output secrets.encrypted
-  protectgh decrypt
+  secrets-action encrypt
+  secrets-action encrypt --vars
+  secrets-action encrypt --input secrets.env --output secrets.encrypted
+  secrets-action decrypt
 `);
 }
 

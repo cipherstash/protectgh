@@ -5,7 +5,7 @@ GitHub Action to decrypt CipherStash-protected secrets and export them to `$GITH
 ## Usage
 
 ```yaml
-- uses: cipherstash/protectgh@v1
+- uses: cipherstash/secrets-action@v1
   env:
     CS_CLIENT_ID: ${{ secrets.CS_CLIENT_ID }}
     CS_CLIENT_KEY: ${{ secrets.CS_CLIENT_KEY }}
@@ -31,22 +31,22 @@ For local encryption/decryption:
 
 ```bash
 # Install (from npm if published, or locally from repo)
-npm install -g protectgh  # from npm registry
-npm install -g .          # from local repo
+npm install -g @cipherstash/secrets-action  # from npm registry
+npm install -g .                             # from local repo
 
 # Show help
-protectgh --help
+secrets-action --help
 
 # Encrypt (requires CS_* env vars)
-protectgh encrypt                              # file mode (default)
-protectgh encrypt --file                       # explicit file mode
-protectgh encrypt --vars                       # per-variable mode
-protectgh encrypt -i FILE -o FILE              # custom input/output paths
-protectgh encrypt --input FILE --output FILE   # long form
+secrets-action encrypt                              # file mode (default)
+secrets-action encrypt --file                       # explicit file mode
+secrets-action encrypt --vars                       # per-variable mode
+secrets-action encrypt -i FILE -o FILE              # custom input/output paths
+secrets-action encrypt --input FILE --output FILE   # long form
 
 # Decrypt to stdout (for testing)
-protectgh decrypt
-protectgh decrypt --input FILE                 # decrypt specific file
+secrets-action decrypt
+secrets-action decrypt --input FILE                 # decrypt specific file
 ```
 
 ## Setup
@@ -70,7 +70,7 @@ protectgh decrypt --input FILE                 # decrypt specific file
    export CS_CLIENT_KEY=...
    export CS_CLIENT_ACCESS_KEY=...
    export CS_WORKSPACE_CRN=...
-   protectgh encrypt
+   secrets-action encrypt
    ```
 
 4. Commit the encrypted file:

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-protectgh is a GitHub Action and CLI tool for encrypting/decrypting secrets using CipherStash's Protect library. It integrates with CipherStash ZeroKMS for key management.
+secrets-action is a GitHub Action and CLI tool for encrypting/decrypting secrets using CipherStash's Protect library. It integrates with CipherStash ZeroKMS for key management.
 
 ## Commands
 

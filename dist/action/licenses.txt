@@ -114,6 +114,9 @@ SOFTWARE.
 @cipherstash/protect-ffi-darwin-arm64
 ISC
 
+@cipherstash/protect-ffi-linux-arm64-gnu
+ISC
+
 @cipherstash/protect-ffi-linux-x64-gnu
 ISC
 

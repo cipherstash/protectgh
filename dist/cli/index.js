@@ -9,6 +9,20 @@ module.exports = require(__nccwpck_require__.ab + "index.node")
 
 /***/ }),
 
+/***/ 36:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+module.exports = require(__nccwpck_require__.ab + "index2.node")
+
+/***/ }),
+
+/***/ 306:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+module.exports = require(__nccwpck_require__.ab + "index1.node")
+
+/***/ }),
+
 /***/ 728:
 /***/ ((module) => {
 
@@ -1040,22 +1054,6 @@ module.exports = eval("require")("@cipherstash/protect-ffi-darwin-x64");
 
 /***/ }),
 
-/***/ 886:
-/***/ ((module) => {
-
-module.exports = eval("require")("@cipherstash/protect-ffi-linux-arm64-gnu");
-
-
-/***/ }),
-
-/***/ 232:
-/***/ ((module) => {
-
-module.exports = eval("require")("@cipherstash/protect-ffi-linux-x64-gnu");
-
-
-/***/ }),
-
 /***/ 247:
 /***/ ((module) => {
 
@@ -1141,9 +1139,9 @@ module.exports = (__nccwpck_require__(802)/* .proxy */ .BX)({
         'win32-x64-msvc': () => __nccwpck_require__(456),
         'darwin-x64': () => __nccwpck_require__(848),
         'darwin-arm64': () => __nccwpck_require__(546),
-        'linux-x64-gnu': () => __nccwpck_require__(232),
+        'linux-x64-gnu': () => __nccwpck_require__(306),
         'linux-x64-musl': () => __nccwpck_require__(247),
-        'linux-arm64-gnu': () => __nccwpck_require__(886),
+        'linux-arm64-gnu': () => __nccwpck_require__(36),
     },
     debug: () => __nccwpck_require__(378),
 });
@@ -7801,7 +7799,7 @@ function parseArgs() {
     const command = rawCommand;
     if (command !== "encrypt" && command !== "decrypt") {
         console.error(`Unknown command: ${command}`);
-        console.error('Usage: protectgh <encrypt|decrypt> [options]');
+        console.error('Usage: secrets-action <encrypt|decrypt> [options]');
         process.exit(1);
     }
     let input = command === "encrypt" ? DEFAULT_PLAINTEXT : DEFAULT_ENCRYPTED;
@@ -7826,11 +7824,11 @@ function parseArgs() {
 }
 function printHelp() {
     console.log(`
-protectgh - CipherStash secrets encryption for GitHub Actions
+secrets-action - CipherStash secrets encryption for GitHub Actions
 
 USAGE:
-  protectgh encrypt [options]    Encrypt plaintext secrets file
-  protectgh decrypt [options]    Decrypt secrets to stdout (for testing)
+  secrets-action encrypt [options]    Encrypt plaintext secrets file
+  secrets-action decrypt [options]    Decrypt secrets to stdout (for testing)
 
 OPTIONS:
   --input, -i <file>    Input file path
@@ -7849,10 +7847,10 @@ ENVIRONMENT:
     CS_WORKSPACE_CRN
 
 EXAMPLES:
-  protectgh encrypt
-  protectgh encrypt --vars
-  protectgh encrypt --input secrets.env --output secrets.encrypted
-  protectgh decrypt
+  secrets-action encrypt
+  secrets-action encrypt --vars
+  secrets-action encrypt --input secrets.env --output secrets.encrypted
+  secrets-action decrypt
 `);
 }
 async function main() {

@@ -1,11 +1,11 @@
 {
-  "name": "protectgh",
+  "name": "@cipherstash/secrets-action",
   "version": "1.0.0",
   "description": "GitHub Action to decrypt CipherStash-protected secrets",
   "author": "CipherStash",
   "license": "MIT",
   "bin": {
-    "protectgh": "dist/cli/index.js"
+    "secrets-action": "dist/cli/index.js"
   },
   "scripts": {
     "build": "npm run build:action && npm run build:cli",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@cipherstash/protect": "^10.2.0",
+    "@cipherstash/protect-ffi-linux-arm64-gnu": "^0.18.1",
     "@cipherstash/protect-ffi-linux-x64-gnu": "^0.18.1",
     "dotenv": "^16.4.7"
   },
